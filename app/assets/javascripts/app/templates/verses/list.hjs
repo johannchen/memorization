@@ -1,0 +1,10 @@
+<div class="commands">
+  <a href="#" {{action "showNew"}}>New Verse</a>
+  <a href="#" {{action "refreshListing"}}>Refresh Listing</a>
+</div>
+{{#each verses}}
+  {{view App.ShowVerseView verseBinding="this"}}
+{{/each}}
+{{#if isNewVisible}}
+  {{view App.NewVerseView}}
+{{/if}}
