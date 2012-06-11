@@ -1,4 +1,4 @@
 App.Verse = Ember.Resource.extend
-  url: '/verses'
-  name: 'verse'
-  properties: ['title', 'content']
+  resourceUrl: '/verses'
+  resourceName: 'verse'
+  resourceProperties: ['title', 'content']

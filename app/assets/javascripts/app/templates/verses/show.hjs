@@ -1,0 +1,8 @@
+{{#if isEditing}}
+  {{view App.EditVerseView}}
+{{else}}
+  {{verse.title}}
+  {{verse.content}}
+  <a href="#" {{action "showEdit"}}>Edit</a>
+  <a href="#" {{action "destroyRecord"}}>Remove</a>
+{{/if}}

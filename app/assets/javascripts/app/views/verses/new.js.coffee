@@ -4,11 +4,10 @@ App.NewVerseView = Ember.View.extend
 
   init: ->
     @set "verse", App.Verse.create()
-    @_supper()
+    @_super()
 
-  # ??
   didInsertElement: ->
-    @_supper()
+    @_super()
     @$('input:first').focus()
 
   cancelForm: ->
@@ -19,7 +18,7 @@ App.NewVerseView = Ember.View.extend
 
     event.preventDefault()
 
-    verse.save()
+    verse.saveResource()
       .fail (e) ->
         App.displayError(e)
       .done =>
