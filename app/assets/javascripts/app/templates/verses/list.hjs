@@ -1,10 +1,15 @@
-<div class="commands">
-  <a href="#" {{action "showNew"}}>New Verse</a>
-  <a href="#" {{action "refreshListing"}}>Refresh Listing</a>
+<div id="container">
+  <div id="verse-list">
+    <h2>My Verses</h2>
+		<a href="#" {{action "showNew"}}>New Verse</a><br />
+		<a href="#" {{action "refreshListing"}}>Refresh Listing</a>
+    <ul>
+			{{#each verses}}
+				{{view App.VerseTitleView verseBinding="this"}}
+			{{/each}}
+    </ul>
+  </div>
+	{{#if isNewVisible}}
+		{{view App.NewVerseView}}
+	{{/if}}
 </div>
-{{#each verses}}
-  {{view App.ShowVerseView verseBinding="this"}}
-{{/each}}
-{{#if isNewVisible}}
-  {{view App.NewVerseView}}
-{{/if}}
