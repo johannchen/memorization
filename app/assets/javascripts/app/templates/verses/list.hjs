@@ -1,15 +1,22 @@
 <div id="container">
   <div id="verse-list">
     <h2>My Verses</h2>
-		<button {{action "showNew"}}>New Verse</button>
-		<button {{action "refreshListing"}}>Refresh Listing</button>
+		<div class="menu">
+			<button {{action "showNew"}}>New Verse</button>
+			<button {{action "refreshListing"}}>Refresh Listing</button>
+		</div>
     <ul>
 			{{#each verses}}
 				{{view App.VerseTitleView verseBinding="this"}}
 			{{/each}}
     </ul>
   </div>
-	{{#if isNewVisible}}
-		{{view App.NewVerseView}}
-	{{/if}}
+	<div id="detail">
+		{{#if isNewVisible}}
+			{{view App.NewVerseView}}
+		{{/if}}
+		{{#if App.selectedVerseController.verse}}
+			{{view App.ShowVerseView}}
+		{{/if}}
+	</div>
 </div>

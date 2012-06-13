@@ -1,6 +1,9 @@
+<div class="card">
 {{#with verse}}
   {{view Ember.TextField valueBinding="title" placeholder="Title e.g John 3:16"}}
-  {{view Ember.TextArea valueBinding="content" placeholder="Content"}}
+	<br />
+  {{view Ember.TextArea rows="10" cols="40" valueBinding="content" placeholder="Content to memorize"}}
+	<br />
   {{#if id}}
     {{submitButton "Update"}}
   {{else}}
@@ -8,3 +11,4 @@
   {{/if}}
   <a href="#" {{action "cancelForm"}}>Cancel</a>
 {{/with}}
+</div>

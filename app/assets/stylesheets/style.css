@@ -43,15 +43,15 @@ body {
   margin: 0;
 }
 
-#verse-list button {
-  position: relative;
-  bottom: 5px;
+#verse-list .menu {
+  position: absolute;
+  top: 45px;
   left: 13px;
 }
 
 #verse-list ul {
   position: absolute;
-  top: 45px;
+  top: 80px;
   right: 13px;
   bottom: 30px;
   left: 13px;
