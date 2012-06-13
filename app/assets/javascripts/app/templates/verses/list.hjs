@@ -1,8 +1,8 @@
 <div id="container">
   <div id="verse-list">
     <h2>My Verses</h2>
-		<a href="#" {{action "showNew"}}>New Verse</a><br />
-		<a href="#" {{action "refreshListing"}}>Refresh Listing</a>
+		<button {{action "showNew"}}>New Verse</button>
+		<button {{action "refreshListing"}}>Refresh Listing</button>
     <ul>
 			{{#each verses}}
 				{{view App.VerseTitleView verseBinding="this"}}
