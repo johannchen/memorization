@@ -1,5 +1,5 @@
 html, body {
-  background: url(images/broken_noise.png);
+  background: url('/assets/broken_noise.png');
   color: #333;
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ body {
   top: 10px;
   bottom: 10px;
   padding: 0;
-  background: url(images/ricepaper2.png);
+  background: url('/assets/ricepaper2.png');
   border-radius: 12px;
 }
 
@@ -44,7 +44,7 @@ body {
 }
 
 #verse-list button {
-  position: absolute;
+  position: relative;
   bottom: 5px;
   left: 13px;
 }
@@ -119,7 +119,7 @@ body {
 #detail .delete-number-view {
   width: 16px;
   height: 16px;
-  background-image: url(images/delete.png);
+  background-image: url('/assets/delete.png');
 }
 
 #detail .no-verse-selected {
