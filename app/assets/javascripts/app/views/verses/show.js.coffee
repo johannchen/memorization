@@ -1,5 +1,7 @@
 App.ShowVerseView = Ember.View.extend
+  verseBinding: 'App.selectedVerseController.verse'
   templateName: 'app/templates/verses/show'
+  classNames: ['card']
 
   doubleClick: ->
     @showEdit()
