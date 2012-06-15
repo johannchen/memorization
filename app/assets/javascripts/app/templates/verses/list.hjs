@@ -3,7 +3,7 @@
     <h2>My Verses</h2>
 		<div class="menu">
 			<button {{action "showNew"}}>New Verse</button>
-			<button {{action "refreshListing"}}>Refresh Listing</button>
+			<!---<button {{action "refreshListing"}}>Refresh Listing</button> --->
 		</div>
     <ul>
 			{{#each verses}}
@@ -14,9 +14,10 @@
 	<div id="detail">
 		{{#if isNewVisible}}
 			{{view App.NewVerseView}}
-		{{/if}}
-		{{#if App.selectedVerseController.verse}}
-			{{view App.ShowVerseView}}
+		{{else}}
+			{{#if App.selectedVerseController.verse}}
+				{{view App.ShowVerseView}}
+			{{/if}}
 		{{/if}}
 	</div>
 </div>

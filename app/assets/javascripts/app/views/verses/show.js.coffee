@@ -12,6 +12,12 @@ App.ShowVerseView = Ember.View.extend
   hideEdit: ->
     @set 'isEditing', false
 
+  showMemorize: ->
+    @set 'isMemorizing', true
+
+  hideMemoirze: ->
+    @set 'isMemorizing', false
+
   destroyRecord: ->
     verse = @get "verse"
 
@@ -20,3 +26,4 @@ App.ShowVerseView = Ember.View.extend
         App.displayError(e)
       .done ->
         App.versesController.removeObject verse
+        App.selectedVerseController.set 'verse', null

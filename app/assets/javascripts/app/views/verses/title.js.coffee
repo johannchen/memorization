@@ -7,8 +7,8 @@ App.VerseTitleView = Ember.View.extend
     verse = @get 'verse'
     App.selectedVerseController.set 'verse', verse
 
-  isSelected: ->
+  isSelected: Ember.computed(-> 
     selectedVerse = App.selectedVerseController.get 'verse'
     verse = @get 'verse'
     true if verse is selectedVerse
-  .property('App.selectedVerseController.verse')
+  ).property('App.selectedVerseController.verse')

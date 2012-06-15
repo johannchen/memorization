@@ -1,10 +1,15 @@
 {{#if isEditing}}
   {{view App.EditVerseView}}
 {{else}}
+	{{#if isMemorizing}}
+		{{view App.MemorizeVerseView}}
+	{{else}}
 	<article>
 		<h1>{{App.selectedVerseController.verse.title}}</h1>
 		<p>{{App.selectedVerseController.verse.content}}</p>
-		<a href="#" {{action "showEdit"}}>Edit</a>
+		<a href="#" {{action "showMemorize"}}>Memorize</a> |
+		<a href="#" {{action "showEdit"}}>Edit</a> |
 		<a href="#" {{action "destroyRecord"}}>Remove</a>
 	</article>
+	{{/if}}
 {{/if}}
