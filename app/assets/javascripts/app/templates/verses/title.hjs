@@ -1,1 +1,4 @@
 {{verse.title}}
+{{#if verse.memorized }}
+	<img src="/assets/check.png" height="20" width="20"/>
+{{/if}}
