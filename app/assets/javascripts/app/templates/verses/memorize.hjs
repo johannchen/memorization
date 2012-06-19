@@ -3,9 +3,8 @@
 		{{view Ember.TextArea rows="10" cols="40" valueBinding="typedContent" placeholder="type to memorize"}}
 		<br />
 		{{submitButton "Submit"}}
+		<input type="reset" value="Reset" {{action "reset"}}>
 	</form>
-	{{#if showResult}}
-		<p>{{typedContent}}</p>	
-	{{/if}}
+	<div id="diff-result"></div>
 </div>
 

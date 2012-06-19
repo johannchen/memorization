@@ -15,7 +15,7 @@ App.ShowVerseView = Ember.View.extend
   showMemorize: ->
     @set 'isMemorizing', true
 
-  hideMemoirze: ->
+  hideMemorize: ->
     @set 'isMemorizing', false
 
   destroyRecord: ->

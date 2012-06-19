@@ -7,12 +7,26 @@ App.MemorizeVerseView = Ember.View.extend
     @set 'typedContent', null
     @_super()
 
-  showResult: ->
-    @set 'showResult', true
+  reset: ->
+    $('#diff-result').empty()
 
   submit: (event) ->
     event.preventDefault()
-    @showResult()
-
-    # compare verses if matched, memorized
+    typedContent = @get 'typedContent'
+    memorizeVerse = @get 'verse'
+    if typedContent is memorizeVerse.content
+      # mark memorized
+      $('#diff-result').html("You have memorized this verse!")
+      memorizeVerse.memorized = true
+      memorizeVerse.saveResource()
+        .fail (e) ->
+          App.displayError(e)
+        .done =>
+          parentView = @get("parentView")
+          parentView.get("verse").duplicateProperties(memorizeVerse)
+    else
+      dmp = new diff_match_patch()
+      d = dmp.diff_main(typedContent, memorizeVerse.content)
+      ds = dmp.diff_prettyHtml(d)
+      $('#diff-result').html(ds)
 
