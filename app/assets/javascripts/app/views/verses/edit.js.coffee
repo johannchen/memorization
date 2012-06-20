@@ -1,4 +1,5 @@
 App.EditVerseView = Ember.View.extend
+  verseBinding: 'App.selectedVerseController.verse'
   tagName: 'form'
   templateName: 'app/templates/verses/edit'
 
@@ -6,8 +7,9 @@ App.EditVerseView = Ember.View.extend
     # creat a new verse that's a duplicate of the verse in the parentView;
     # change made to the duplicate won't be applied to the orginal unless
     # everything goes well in submitForm
-    editableVerse = App.Verse.create this.get('parentView').get('verse')
-    @set "verse", editableVerse
+    # editableVerse = App.Verse.create this.get('parentView').get('verse')
+    # @set "verse", editableVerse
+    # @set "verse", App.selectedVerseController.get 'verse'
     @_super()
 
   didInsertElement: ->

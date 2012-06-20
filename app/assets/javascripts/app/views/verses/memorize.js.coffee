@@ -7,6 +7,9 @@ App.MemorizeVerseView = Ember.View.extend
     @set 'typedContent', null
     @_super()
 
+  review: ->
+    @get('parentView').hideMemorize()
+
   reset: ->
     $('#diff-result').empty()
 

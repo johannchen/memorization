@@ -1,9 +1,11 @@
 <div class="card">
+	<h2>{{verse.title}}</h2>
 	<form>
 		{{view Ember.TextArea rows="10" cols="40" valueBinding="typedContent" placeholder="type to memorize"}}
 		<br />
 		{{submitButton "Submit"}}
 		<input type="reset" value="Reset" {{action "reset"}}>
+		<a href="#" {{action "review"}}>Review</a>
 	</form>
 	<div id="diff-result"></div>
 </div>
