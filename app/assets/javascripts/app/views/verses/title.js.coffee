@@ -6,6 +6,9 @@ App.VerseTitleView = Ember.View.extend
   click: ->
     verse = @get 'verse'
     App.selectedVerseController.set 'verse', verse
+    #TODO: refresh memorize view
+    $("#diff-result").empty()
+    $("form#memorize")[0].reset()
 
   isSelected: Ember.computed(-> 
     selectedVerse = App.selectedVerseController.get 'verse'
