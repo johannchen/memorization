@@ -31,6 +31,7 @@ App.MemorizeVerseView = Ember.View.extend
     else
       dmp = new diff_match_patch()
       d = dmp.diff_main(typedContent, verse.content)
+      dmp.diff_cleanupSemantic(d)
       ds = dmp.diff_prettyHtml(d)
       $('#diff-result').html(ds)
 
