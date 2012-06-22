@@ -8,6 +8,9 @@ App.ListVersesView = Ember.View.extend
   hideNew: ->
     @set 'isNewVisible', false
 
+  sortMemorized: ->
+    @get('verses').sortVerses()
+
   # TODO: refresh does not work #
   # refreshListing: ->
   #  App.versesController.findAll()

@@ -3,6 +3,7 @@
     <h2>My Verses</h2>
 		<div class="menu">
 			<button {{action "showNew"}}>New Verse</button>
+			<button {{action "sortMemorized"}}>Sort</button>
 			<!---<button {{action "refreshListing"}}>Refresh Listing</button> --->
 		</div>
     <ul>
