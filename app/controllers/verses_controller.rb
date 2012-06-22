@@ -1,6 +1,6 @@
 class VersesController < ApplicationController
   def index
-    @verses = Verse.all
+    @verses = Verse.order("id desc")
 
     respond_to do |format|
       format.html
