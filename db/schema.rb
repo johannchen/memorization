@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608214948) do
+ActiveRecord::Schema.define(:version => 20120622212655) do
 
   create_table "verses", :force => true do |t|
     t.string   "title"
     t.string   "content"
-    t.boolean  "memorized"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "memorized",  :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end

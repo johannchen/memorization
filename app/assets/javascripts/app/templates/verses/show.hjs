@@ -1,7 +1,7 @@
 {{#if isEditing}}
   {{view App.EditVerseView}}
 {{else}}
-	{{#if isMemorizing}}
+	{{#if App.selectedVerseController.isMemorizing}}
 		{{view App.MemorizeVerseView}}
 	{{else}}
 	<article>

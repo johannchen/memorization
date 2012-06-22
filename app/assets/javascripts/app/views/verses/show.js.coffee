@@ -13,10 +13,10 @@ App.ShowVerseView = Ember.View.extend
     @set 'isEditing', false
 
   showMemorize: ->
-    @set 'isMemorizing', true
+    App.selectedVerseController.set 'isMemorizing', true
 
   hideMemorize: ->
-    @set 'isMemorizing', false
+    App.selectedVerseController.set 'isMemorizing', false 
 
   confirmRemove: ->
     @destroyRecord() if confirm("Confirm Remove?")
