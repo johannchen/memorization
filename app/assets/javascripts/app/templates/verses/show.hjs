@@ -9,7 +9,7 @@
 		<p>{{App.selectedVerseController.verse.content}}</p>
 		<a href="#" {{action "showMemorize"}}>Memorize</a> |
 		<a href="#" {{action "showEdit"}}>Edit</a> |
-		<a href="#" {{action "destroyRecord"}}>Remove</a>
+		<a href="#" {{action "confirmRemove"}}>Remove</a>
 	</article>
 	{{/if}}
 {{/if}}

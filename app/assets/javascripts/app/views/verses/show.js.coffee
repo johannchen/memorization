@@ -18,6 +18,9 @@ App.ShowVerseView = Ember.View.extend
   hideMemorize: ->
     @set 'isMemorizing', false
 
+  confirmRemove: ->
+    @destroyRecord() if confirm("Confirm Remove?")
+
   destroyRecord: ->
     verse = @get "verse"
 
