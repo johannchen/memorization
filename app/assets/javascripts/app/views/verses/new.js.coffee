@@ -24,3 +24,4 @@ App.NewVerseView = Ember.View.extend
       .done =>
         App.versesController.pushObject(verse)
         @get("parentView").hideNew()
+        App.selectedVerseController.set 'verse', verse
