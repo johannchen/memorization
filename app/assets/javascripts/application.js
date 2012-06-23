@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require ember
 //= require ./vendor/ember-rest
 //= require ./vendor/diff_match_patch

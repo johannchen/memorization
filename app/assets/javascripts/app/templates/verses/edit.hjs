@@ -1,9 +1,9 @@
 <div class="card">
 {{#with verse}}
-  {{view Ember.TextField valueBinding="title" placeholder="Title e.g John 3:16"}}
-	<br />
+  {{view App.TitleFieldView valueBinding="title" placeholder="Title e.g John 3:16" id="title"}}
+<br />
   {{view Ember.TextArea rows="10" cols="40" valueBinding="content" placeholder="Content to memorize"}}
-	<br />
+<br />
   {{#if id}}
     {{submitButton "Update"}}
   {{else}}
