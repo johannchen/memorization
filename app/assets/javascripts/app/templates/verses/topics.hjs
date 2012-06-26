@@ -1,0 +1,3 @@
+{{#each App.selectedVerseController.verse.topics}}
+    
+{{/each}}

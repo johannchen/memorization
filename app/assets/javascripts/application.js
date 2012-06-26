@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
 //= require ember
-//= require ./vendor/ember-rest
+//= require ember-data
 //= require ./vendor/diff_match_patch
 //= require app/app
 //= require_tree ./app/models
