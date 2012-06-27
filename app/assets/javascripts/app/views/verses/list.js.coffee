@@ -12,5 +12,5 @@ App.ListVersesView = Ember.View.extend
     @get('verses').sortVerses()
 
   # TODO: refresh does not work #
-  # refreshListing: ->
-  #  App.versesController.findAll()
+  refreshListing: ->
+    App.versesController.findAll()

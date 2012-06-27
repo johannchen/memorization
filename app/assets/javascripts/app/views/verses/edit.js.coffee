@@ -4,14 +4,10 @@ App.EditVerseView = Ember.View.extend
   templateName: 'app/templates/verses/edit'
 
   didInsertElement: ->
-    @transaction = App.store.transaction()
-    @transaction.add(@get "verse")
-
     @_super()
     @$('input:first').focus()
 
   cancelForm: ->
-    @transaction.rollback()
     @get("parentView").hideEdit()
 
   submit: (event) ->
@@ -23,5 +19,10 @@ App.EditVerseView = Ember.View.extend
     if validationErrors is not undefined
       App.displayError(validationErrors)
     else
-      @transaction.commit() #TODO: error handling
-      @get("parentView").hideEdit()
+      editVerse = App.store.find(App.Verse, verse.id)
+      editVerse.set "title", verse.title
+      editVerse.set "content", verse.content
+      App.store.commit()
+      #TODO: bug list disappear
+      parentView = @get("parentView")
+      parentView.hideEdit()

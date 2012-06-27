@@ -1,6 +1,12 @@
 App.versesController = Ember.ArrayController.create
-  content: App.store.findAll App.Verse, (a, b) ->
-    b.get("memorized") - a.get("memorized")
+  content: App.store.findAll(App.Verse)
+
+  findAll: ->
+    @set "content", App.store.findAll(App.Verse)
+
+  saveVerse: (verse) ->
+    App.store.createRecord(App.Verse, verse)
+    App.store.commit()
 
   #insert verse to the top of the list 
   add: (verse) ->
