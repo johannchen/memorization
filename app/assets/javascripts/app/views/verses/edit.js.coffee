@@ -3,31 +3,25 @@ App.EditVerseView = Ember.View.extend
   tagName: 'form'
   templateName: 'app/templates/verses/edit'
 
-  init: ->
-    # creat a new verse that's a duplicate of the verse in the parentView;
-    # change made to the duplicate won't be applied to the orginal unless
-    # everything goes well in submitForm
-    # editableVerse = App.Verse.create this.get('parentView').get('verse')
-    # @set "verse", editableVerse
-    # @set "verse", App.selectedVerseController.get 'verse'
-    @_super()
-
   didInsertElement: ->
+    @transaction = App.store.transaction()
+    @transaction.add(@get "verse")
+
     @_super()
     @$('input:first').focus()
 
   cancelForm: ->
+    @transaction.rollback()
     @get("parentView").hideEdit()
 
   submit: (event) ->
     verse = @get "verse"
+    validationErrors = verse.validate()
 
     event.preventDefault()
 
-    verse.saveResource()
-      .fail (e) ->
-        App.displayError(e)
-      .done =>
-        parentView = @get("parentView")
-        parentView.get("verse").duplicateProperties(verse)
-        parentView.hideEdit()
+    if validationErrors is not undefined
+      App.displayError(validationErrors)
+    else
+      @transaction.commit() #TODO: error handling
+      @get("parentView").hideEdit()

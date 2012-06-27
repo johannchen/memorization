@@ -1,5 +1,7 @@
-App.versesController = Ember.ResourceController.create
-  resourceType: App.Verse
+App.versesController = Ember.ArrayController.create
+  content: App.store.findAll App.Verse, (a, b) ->
+    b.get("memorized") - a.get("memorized")
+
   #insert verse to the top of the list 
   add: (verse) ->
     @insertAt(0, verse)
@@ -12,13 +14,12 @@ App.versesController = Ember.ResourceController.create
       @set "sort", "desc"
 
     if @get("sort") is "asc"
-      sortedVerses = @get("content").sort((a, b) ->
-        a.get("memorized") - b.get("memorized")
-      )
+      sortedVerses = @get("content").orderBy('memorized DESC')
     else
-      sortedVerses = @get("content").sort((a, b) ->
-        b.get("memorized") - a.get("memorized")
-      )
+      sortedVerses = @get("content").orderBy('memorized ASC')
+      #sortedVerses = @get("content").sort((a, b) ->
+      #  b.get("memorized") - a.get("memorized")
+      #)
 
     @set "content", []
     @set "content", sortedVerses

@@ -3,25 +3,29 @@ App.NewVerseView = Ember.View.extend
   templateName: 'app/templates/verses/edit'
 
   init: ->
-    @set "verse", App.Verse.create()
     @_super()
+    @transaction = App.store.transaction()
+    @set "verse", @transaction.createRecord(App.Verse, {})
 
   didInsertElement: ->
     @_super()
     @$('input:first').focus()
 
   cancelForm: ->
+    @transaction.rollback()
     @get("parentView").hideNew()
 
   submit: (event) ->
     verse = @get "verse"
+    validationErrors = verse.validate()
 
     event.preventDefault()
 
-    verse.saveResource()
-      .fail (e) ->
-        App.displayError(e)
-      .done =>
-        App.versesController.add(verse)
-        @get("parentView").hideNew()
-        App.selectedVerseController.set 'verse', verse
+    if validationErrors is not undefined
+      App.displayError(validationErrors)
+    else
+      @transaction.commit()
+      #TODO: insert on top
+      App.versesController.add(verse)
+      @get("parentView").hideNew()
+      App.selectedVerseController.set 'verse', verse

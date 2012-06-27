@@ -2,8 +2,3 @@
   {{ view App.ListVersesView }}
 </script>
 
-<script type="text/javascript">
-  $(function() {
-    App.versesController.loadAll(<%= @verses.to_json.html_safe %>);
-  });
-</script>

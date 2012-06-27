@@ -6,6 +6,12 @@ App.MemorizeVerseView = Ember.View.extend
     @set 'typedContent', null
     @_super()
 
+  didInsertElement: ->
+    @transaction = App.store.transaction()
+    @transaction.add(@get "verse")
+    @_super()
+    @$('textarea').focus()
+
   review: ->
     @get('parentView').hideMemorize()
 
@@ -14,23 +20,21 @@ App.MemorizeVerseView = Ember.View.extend
 
   submit: (event) ->
     event.preventDefault()
-    typedContent = @get 'typedContent'
     verse = @get 'verse'
-    memorized = verse.memorized + 1
-    memorizedVerse = App.Verse.create verse
-    if typedContent is verse.content
+    typedContent = @get 'typedContent'
+    verseContent = verse.get("content")
+    if typedContent is verseContent
       # mark memorized
       $('#diff-result').html("Yay! You have memorized this verse!")
-      memorizedVerse.set "memorized", memorized
-      memorizedVerse.saveResource()
-        .fail (e) ->
-          App.displayError(e)
-        .done =>
-          parentView = @get("parentView")
-          parentView.get("verse").duplicateProperties(memorizedVerse)
+      memorized = verse.get("memorized") + 1
+      verse.set "memorized", memorized
+      @transaction.commit() #TODO: error handling
+
+      parentView = @get("parentView")
+      parentView.get("verse").duplicateProperties(verse)
     else
       dmp = new diff_match_patch()
-      d = dmp.diff_main(typedContent, verse.content)
+      d = dmp.diff_main(typedContent, verseContent)
       dmp.diff_cleanupSemantic(d)
       ds = dmp.diff_prettyHtml(d)
       $('#diff-result').html(ds)
