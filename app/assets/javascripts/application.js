@@ -13,12 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
+//= require ./vendor/diff_match_patch
+//= require handlebars
 //= require ember
 //= require ember-data
-//= require ./vendor/diff_match_patch
-//= require app/app
-//= require_tree ./app/models
-//= require_tree ./app/controllers
-//= require_tree ./app/views
-//= require_tree ./app/helpers
-//= require_tree ./app/templates
+//= require ./memorization
+//= require ./store
+//= require_tree ./models
+//= require_tree ./controllers
+//= require_tree ./views
+//= require_tree ./helpers
+//= require_tree ./templates
+//= require_tree ./routes
+//= require_self
+

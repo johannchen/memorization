@@ -1,0 +1,24 @@
+<div id="container">
+  <div id="verse-list">
+    <h2>My Verses</h2>
+		<div class="menu">
+			<button {{action "showNew"}}>New Verse</button>
+			<button {{action "sortMemorized"}}>Sort</button>
+			<button {{action "refreshListing"}}>Refresh Listing</button>
+		</div>
+    <ul>
+			{{#each verses}}
+			<li><a {{action showVerse context="verse"}}>{{verse.title}}</a></li>
+			{{/each}}
+    </ul>
+  </div>
+	<div id="detail">
+		{{#if isNewVisible}}
+			{{view App.NewVerseView}}
+		{{else}}
+			{{#if App.selectedVerseController.verse}}
+				{{view App.ShowVerseView}}
+			{{/if}}
+		{{/if}}
+	</div>
+</div>
